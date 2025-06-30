@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Burger",
+        "price": 25,
+        "description": "Beef burger with cheese",
+        "quantity": 5
+    },
+    {
+        "name": "Pizza",
+        "price": 40,
+        "description": "Large pizza with veggies",
+        "quantity": 2
+    },
+    {
+        "name": "Fries",
+        "price": 20,
+        "description": "Crispy french fries",
+        "quantity": 4
+    }
+]
