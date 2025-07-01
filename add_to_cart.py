@@ -22,7 +22,7 @@ def add_to_cart_by_name(item_name):
         index, found_item = matched
 
         if found_item['quantity'] <= 0:
-            print(Fore.YELLOW + "Sorry, this item is out of stock.")
+            print(Fore.BLUE + "Sorry, this item is out of stock.")
             return
 
         try:

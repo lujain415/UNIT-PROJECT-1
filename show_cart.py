@@ -1,4 +1,5 @@
-from main import *
+import json
+from colorama import *
 Cart_File = "cart.json"
 def show_cart():
     try:

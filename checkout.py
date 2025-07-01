@@ -1,4 +1,5 @@
-from main import *
+import json
+from colorama import *
 Cart_File = "cart.json"
 
 def checkout():
@@ -7,7 +8,7 @@ def checkout():
             cart = json.load(file)
 
         if not cart:
-            print(Fore.YELLOW + "🛒 Your cart is empty. Nothing to checkout.")
+            print(Fore.BLUE + " Your cart is empty. Nothing to checkout.")
             return
 
         print(Fore.CYAN + "\n Checkout Receipt:")
@@ -24,6 +25,6 @@ def checkout():
             json.dump([], file)
 
     except FileNotFoundError:
-        print(Fore.YELLOW + " Your cart is empty (no file).")
+        print(Fore.BLUE + " Your cart is empty (no file).")
     except Exception as e:
         print(Fore.RED + f" Error: {e}")

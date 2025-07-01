@@ -1,10 +1,10 @@
 import json
 from colorama import *
-from main import *
+
 Menu_File = "menu.json"
 
 def search_products():
-    keyword = input(Fore.YELLOW + "Enter a product name to search: ").lower()
+    keyword = input(Fore.CYAN + "Enter a product name to search: ").lower()
 
     try:
         with open(Menu_File, "r") as file:
