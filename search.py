@@ -1,6 +1,7 @@
 import json
 from colorama import *
 from main import *
+Menu_File = "menu.json"
 
 def search_products():
     keyword = input(Fore.YELLOW + "Enter a product name to search: ").lower()
@@ -11,10 +12,11 @@ def search_products():
 
         found = False
         for item in menu:
-            if keyword in item['name'].lower():
+            if keyword == item['name'].lower():
                 found = True
                 print(Fore.GREEN + f" Found: {item['name']} - {item['price']} SAR")
                 print(f"   {item['description']} - Available: {item['quantity']}")
+                
                 break
 
         if not found:

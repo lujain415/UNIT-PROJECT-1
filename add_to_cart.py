@@ -1,18 +1,25 @@
+import json
+from colorama import *
 
-from main import *
+Menu_File = "menu.json"
 Cart_File = "cart.json"
 
-def add_to_cart(item_number_str):
+def add_to_cart_by_name(item_name):
     try:
-        index = int(item_number_str) - 1
         with open(Menu_File, "r") as file:
             menu = json.load(file)
 
-        if index < 0 or index >= len(menu):
-            print(Fore.RED + " Invalid menu number.")
+        matched = None
+        for idx, item in enumerate(menu):
+            if item_name.lower() == item['name'].lower():
+                matched = (idx, item)
+                break
+
+        if not matched:
+            print(Fore.RED + "Product not found. Please check the name.")
             return
 
-        found_item = menu[index]
+        index, found_item = matched
 
         if found_item['quantity'] <= 0:
             print(Fore.YELLOW + "Sorry, this item is out of stock.")
@@ -32,13 +39,12 @@ def add_to_cart(item_number_str):
         with open(Cart_File, "w") as f:
             json.dump(cart, f, indent=4)
 
+        
         menu[index]['quantity'] -= 1
         with open(Menu_File, "w") as f:
             json.dump(menu, f, indent=4)
 
-        print(Fore.GREEN + f"✅ {found_item['name']} added to your cart.")
+        print(Fore.GREEN + f"{found_item['name']} added to your cart.")
 
-    except ValueError:
-        print(Fore.RED + " Please enter a valid number.")
     except Exception as e:
         print(Fore.RED + f"Error: {e}")
